@@ -38,7 +38,7 @@ string Cenario:: addBau(string escolhaDoJogador, Jogador &player, int* resultado
     //bau encontrado
     if(escolhaDoJogador=="IGNORAR"){
         *resultado = 0;
-        return "Alguns não nasceram com a coragem suficiente para olhar dentro de um baú! Tudo bem, continue sua jornada, Ninguém ficará sabendo desse seu ato de covardia…";
+        return "Alguns nao nasceram com a coragem suficiente para olhar dentro de um bau! Tudo bem, continue sua jornada, Ninguem ficara sabendo desse seu ato de covardia…";
     }
     else{
         //sortear um numero de 1 a 5 para o jogador receber sua recompensa
@@ -48,12 +48,12 @@ string Cenario:: addBau(string escolhaDoJogador, Jogador &player, int* resultado
 
         if(numeroSorteado==1){
             player.setVidas((player.getVidas() + 1));
-            return "Parabens, acaba de ganhar uma vida extra! Parece que a sorte esta com você, continue sua jornada!.";
+            return "Parabens, acaba de ganhar uma vida extra! Parece que a sorte esta com voce, continue sua jornada!.";
         }
         else if(numeroSorteado==2){
             string cor = "azul";
             player.addAcessorio(cor);
-            return "Uau! Que acessorio lindo! Com certeza a princesa ira gostar! Você acaba de achar uma tiara azul, poderá ve-la na princesa se chegar ao topo da masmorra!";
+            return "Uau! Que acessorio lindo! Com certeza a princesa ira gostar! Você acaba de achar uma tiara azul, podera ve-la na princesa se chegar ao topo da masmorra!";
         }
         else if(numeroSorteado == 3){
             string cor = "rosa";
@@ -64,7 +64,7 @@ string Cenario:: addBau(string escolhaDoJogador, Jogador &player, int* resultado
             Elemento elemento = aleatorizarElemento();
 
             player.addMedalha(elemento);
-            return "AHAHAHA, que sorte! Agora voce pode se exibir para a princesa, apenas eu e você saberemos que você não matou esse monstro.. Parabéns pela medalha!";
+            return "AHAHAHA, que sorte! Agora voce pode se exibir para a princesa, apenas eu e voce saberemos que voce nao matou esse monstro.. Parabens pela medalha!";
         }
         else{
             return "Que azar!! Parece que a sorte nao esta com voce, esse bau estava aprisionando um monstro! Boa sorte guerreiro!";
