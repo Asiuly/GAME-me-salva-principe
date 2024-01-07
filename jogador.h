@@ -19,13 +19,17 @@ struct Medalha{
     Elemento elemento;
 };
 
+struct Acessorio{
+    string cor;
+};
+
 class Jogador {
     private:
         int vidas;
         Cenario* cenarioAtual;
-    public:
         vector<Medalha> medalhas;
-
+        vector<Acessorio> acessorios;
+    public:
         Jogador(int);
         void addMedalha(Elemento);
         int getVidas() const;
@@ -34,6 +38,10 @@ class Jogador {
         void executarMorte();
         void setCenarioAtual(Cenario* cenario);
         Cenario* getCenarioAtual() const;
+        void setVidas(int);
+        void addAcessorio(string);
+        vector<Acessorio> getAcessorio() const;
+        void exibirMedalhasAcessorios() const;
         ~Jogador(){}
 };
 

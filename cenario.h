@@ -16,12 +16,15 @@ class Cenario {
 
     public:
         Cenario(string);
-        void addOpcao(string opcao);
+        void addOpcao(string);
         void retirarVida(Jogador);
-        void addMonstro(Elemento elemento, Elemento fraqueza);
+        void addMonstro(Elemento);
+        void addBuraco(Jogador);
         Monstro getMonstro() const;
         string captarEscolha(int);
-
+        string addBau(string, Jogador &, int*);
+        Elemento aleatorizarElemento() const;
+        string getDescricao() const;
         ~Cenario() {}
 };
 

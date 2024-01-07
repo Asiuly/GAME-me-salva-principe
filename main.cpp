@@ -7,29 +7,58 @@ using namespace std;
 
 int main() {
     Jogador jogador(3);
-
     
-    Cenario cenario1("Voce se ve parado na frente de uma masmorra com duas portas laterais, decide entrar pela esquerda ou pela direita:");
-    cenario1.addOpcao("Esquerda");
-    cenario1.addOpcao("Direita");
-    jogador.setCenarioAtual(&cenario1);
+    Cenario cenarioEntrada("Voce se ve parado na frente de uma masmorra com duas portas laterais, decide entrar pela esquerda ou pela direita: (1 para esquerda, 2 para direita)");
+    cenarioEntrada.addOpcao("Esquerda");
+    cenarioEntrada.addOpcao("Direita");
+    
+    Cenario cenarioMonstro("Oh Nao! Voce nao ouviu os barulhos? Acabou de entrar em uma sala com um monstro! Para enfrenta-lo, precisa o atacar com seu elemento oposto, sera que você vai conseguir? (1 - agua, 2- fogo, 3-grama, 4- ar)");
+    cenarioMonstro.addOpcao("AGUA");
+    cenarioMonstro.addOpcao("FOGO");
+    cenarioMonstro.addOpcao("GRAMA");
+    cenarioMonstro.addOpcao("AR");
+    cenarioMonstro.addMonstro(cenarioMonstro.aleatorizarElemento());
 
-    Cenario cenario2("Você encontrou um monstro! adivinhe seu elemento e tente mata-lo com uma das seguintes opcoes");
-    cenario2.addOpcao("AGUA");
-    cenario2.addOpcao("FOGO");
-    cenario2.addOpcao("GRAMA");
-    cenario2.addOpcao("AR");
-    cenario2.addMonstro(FOGO, AGUA);
-    jogador.setCenarioAtual(&cenario2);
+    Cenario cenarioBau("Que sorte! Voce encontra um bau do tesouro! Uma caixa arredondada com detalhes dourados ao lado, sera uma armadilha? Deseja abrir o bau? (1 para ignorar, 2 para abrir) \n> ");
+    cenarioBau.addOpcao("IGNORAR");
+    cenarioBau.addOpcao("ABRIR");
+
+    jogador.setCenarioAtual(&cenarioEntrada);
+    cout << cenarioEntrada.getDescricao() << endl;
 
     int escolhaDoJogador;
-    cout << "Escolha a opção que desejar(entre 1 e 4 nesse caso)";
-    cin >> escolhaDoJogador;
 
     string opcaoEscolhida = jogador.getCenarioAtual()->captarEscolha(escolhaDoJogador);
-    jogador.batalhar(jogador.getCenarioAtual()->getMonstro(), opcaoEscolhida);
 
-    cout << "fim do jogo";
+    if(opcaoEscolhida == "Esquerda"){
+        jogador.setCenarioAtual(&cenarioMonstro);
+        cout << jogador.getCenarioAtual()->getMonstro().descricao;
+        cout << cenarioMonstro.getDescricao() << endl;
+        cin >> escolhaDoJogador;
+
+        opcaoEscolhida = jogador.getCenarioAtual()->captarEscolha(escolhaDoJogador);
+        jogador.batalhar(jogador.getCenarioAtual()->getMonstro(), opcaoEscolhida);
+    }
+    else{
+        jogador.setCenarioAtual(&cenarioBau);
+        cout << cenarioBau.getDescricao() << endl;
+        cin >> escolhaDoJogador;
+
+        opcaoEscolhida = jogador.getCenarioAtual()->captarEscolha(escolhaDoJogador);
+        int resultadoBau;
+        cout << cenarioBau.addBau(opcaoEscolhida, jogador, &resultadoBau) << endl;
+
+        if(resultadoBau == 5){
+            jogador.setCenarioAtual(&cenarioMonstro);
+            cout << "escolha um elemento para combater o monstro, (1- agua, 2- fogo, 3- grama, 4-ar) \n>";
+            cout << jogador.getCenarioAtual()->getMonstro().descricao;
+            cin >> escolhaDoJogador;
+            opcaoEscolhida = jogador.getCenarioAtual()->captarEscolha(escolhaDoJogador);
+            jogador.batalhar(jogador.getCenarioAtual()->getMonstro(), opcaoEscolhida);
+        }
+    }
+
+    jogador.exibirMedalhasAcessorios();
 
     return 0;
 }

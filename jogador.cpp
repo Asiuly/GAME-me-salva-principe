@@ -61,3 +61,55 @@ void Jogador:: setCenarioAtual(Cenario* cenario){
 Cenario* Jogador:: getCenarioAtual() const{
     return cenarioAtual;
 }
+
+void Jogador:: setVidas(int vida) {
+    this->vidas = vida;
+}
+
+void Jogador:: addAcessorio(string cor){
+    Acessorio acessorio;
+    acessorio.cor = cor;
+
+    acessorios.push_back(acessorio);
+}
+
+vector<Acessorio> Jogador:: getAcessorio() const{
+    return acessorios;
+}
+
+void Jogador:: exibirMedalhasAcessorios() const{
+    
+    if(medalhas.size() == 0){
+        cout << "medalhas: 0" << endl;
+    }
+    else{
+        cout << "medalhas" << endl;
+        for(int i=0; i<medalhas.size(); i++){
+            if(medalhas[i].elemento==FOGO){
+                cout << "+1 medalha de FOGO" << endl;
+            }
+            else if(medalhas[i].elemento == AGUA){
+                cout << "+1 medalha de AGUA" << endl;
+            }
+            else if(medalhas[i].elemento == GRAMA){
+                cout << "+1 medalha de GRAMA" << endl;
+            }
+            else{
+                cout << "+1 medalha de AR" << endl;
+            }
+        }
+    }
+
+    if(acessorios.size() == 0){
+        cout << "acessorios: 0" << endl;
+    }
+    else{
+        cout << "acessorios" << endl;
+        for(int i=0; i<acessorios.size(); i++){
+            cout << "+1 acessorio da cor " << acessorios[i].cor << endl;
+        }
+    }
+
+    cout << "quantidade de vidas: " << getVidas() << endl;
+
+}
