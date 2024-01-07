@@ -35,15 +35,18 @@ bool Jogador:: batalhar(Monstro monstro1, string opcaoCenarioBatalha){
     
     
     if(elementoEscolhido == monstro1.fraqueza){
-        cout << "monstro derrotado!" << endl;
+        cout << "Muito bem! Parece que voce entende de elementos! Aqui esta uma medalha por sua bela conquista! A princesa ficara orgulhosa, pode prosseguir seu caminho em paz!" << endl;
         addMedalha(monstro1.elemento);
         return true;
     }
     else{
-        cout << "elemento erradoo! menos uma vida" << endl;
-        if(this->vidas>1)
+        cout << "Naoo! Parece que voce se confundiu ao atacar os elementos, Ninguem ira ficar sabendo dessa falha, voce perdeu uma vida!" << endl;
+        if(this->vidas>1){
+            cout << "Parece que voce deu sorte dessa vez! Escapou do elementar por pouco! Fuja dessa sala imediatamente e esconda esse fracasso… Boa sorte da proxima vez!" << endl;
             this->vidas -= 1;
+        }
         else
+            cout << "Parece que esse elementar era mais do que voce podia lidar, infelizmente sua jornada de heroi acaba aqui! Dê uma olhada no seu legado:" << endl;
             executarMorte();
 
         return false;
