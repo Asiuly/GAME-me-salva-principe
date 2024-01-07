@@ -25,18 +25,18 @@ struct Acessorio{
 
 class Jogador {
     private:
-        int vidas;
-        Cenario* cenarioAtual;
-        vector<Medalha> medalhas;
-        vector<Acessorio> acessorios;
-    public:
-        Jogador(int);
+        int vidas; //vidas do player
+        Cenario* cenarioAtual; //cenário em que o jogador se encontra
+        vector<Medalha> medalhas; //medalhas elementais adquiridas
+        vector<Acessorio> acessorios; //acessórios para princesa adquiridos
+    public: //funções explicadas no arquivo cpp
+        Jogador(int, Cenario*);
         void addMedalha(Elemento);
         int getVidas() const;
         vector<Medalha> getMedalhas() const;
         bool batalhar(Monstro, string);
         void executarMorte();
-        void setCenarioAtual(Cenario* cenario);
+        void setCenarioAtual();
         Cenario* getCenarioAtual() const;
         void setVidas(int);
         void addAcessorio(string);
